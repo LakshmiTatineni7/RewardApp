@@ -18,8 +18,8 @@ Given a record of every transaction during a three month period, calculate the r
 git clone https://github.com/LakshmiTatineni7/RewardApp.git
 
 ## In windows 
-- open command prompt and change directory to application
-- runn bellow commands to install
+- open command prompt and change directory to the application
+- run bellow commands to install
 
 mvn clean install
 
