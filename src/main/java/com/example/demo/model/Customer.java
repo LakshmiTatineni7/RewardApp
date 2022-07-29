@@ -5,6 +5,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
@@ -14,14 +15,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Entity
 public class Customer {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+
 	private String name;
+
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<CustomerTransaction> transactions;
+
 	@JsonInclude
 	@Transient
+
 	private Long rewardPoints;
+
 	@JsonInclude
 	@Transient
 	private Double totalPurchases;
@@ -30,9 +36,9 @@ public class Customer {
 		super();
 	}
 
-	public Customer(Integer id, String name) {
+	public Customer(String name) {
 		super();
-		this.id = id;
+		// this.id = id;
 		this.name = name;
 	}
 
@@ -64,14 +70,16 @@ public class Customer {
 		if (transactions == null || transactions.isEmpty())
 			return 0l;
 
-		return transactions.stream().map(x -> x.getPoints().intValue()).reduce(0, (subtotal, element) -> subtotal + element).longValue();
+		return transactions.stream().map(x -> x.getPoints().intValue())
+				.reduce(0, (subtotal, element) -> subtotal + element).longValue();
 	}
 
 	public Double getTotalPurchases() {
 		if (transactions == null || transactions.isEmpty())
 			return 0d;
 
-		return transactions.stream().map(x -> x.getTotal().doubleValue()).reduce(0d, (subtotal, element) -> subtotal + element).doubleValue();
+		return transactions.stream().map(x -> x.getTotal().doubleValue())
+				.reduce(0d, (subtotal, element) -> subtotal + element).doubleValue();
 	}
 
 }

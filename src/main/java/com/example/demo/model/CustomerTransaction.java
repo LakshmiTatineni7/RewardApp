@@ -13,9 +13,6 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
 @Table(name = "my_transaction")
 public class CustomerTransaction extends Reward {
@@ -40,9 +37,9 @@ public class CustomerTransaction extends Reward {
 		super();
 	}
 
-	public CustomerTransaction(Long id, Customer customer, Double total, String description, Date date) {
+	public CustomerTransaction(Customer customer, Double total, String description, Date date) {
 		super();
-		this.id = id;
+		// this.id = id;
 		this.customer = customer;
 		this.total = total;
 		this.description = description;
