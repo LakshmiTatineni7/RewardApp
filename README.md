@@ -22,7 +22,7 @@ git clone https://github.com/LakshmiTatineni7/RewardApp.git
 mvnw spring-boot:run
 
 Open this url to see the customers data aand their purchase transaction details available in memeory db.
-http://localhost:8080/customers
+      http://localhost:8080/customers
 
 Individual customer transaction history 
-http://localhost:8080/customers/100
+      http://localhost:8080/customers/100
