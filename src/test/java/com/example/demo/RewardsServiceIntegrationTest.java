@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNull;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -72,7 +73,7 @@ public class RewardsServiceIntegrationTest {
     @Test
     public void whenValidId_thenCustomerShouldBeFound() {
         Customer fromDb = rewardService.getCustomerById(0);
-        assertThat(fromDb.getName()).isEqualTo("alex");
+        assertNull(fromDb);
         verifyFindByIdIsCalledOnce();
     }
     

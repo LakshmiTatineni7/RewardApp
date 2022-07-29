@@ -30,6 +30,7 @@ import com.example.demo.controller.RewardsController;
 import com.example.demo.model.Customer;
 import com.example.demo.model.CustomerTransaction;
 import com.example.demo.service.RewardsService;
+import com.example.demo.service.RewardsServiceMock;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value=RewardsController.class)
@@ -43,6 +44,9 @@ public class ReawardControllerIntegrationTest {
     @MockBean
     private RewardsService service;
 
+    @MockBean
+    private RewardsServiceMock serviceMock;
+    
     @Before
     public void setUp() throws Exception {
     }
